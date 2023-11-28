@@ -11,4 +11,4 @@ if (last < 6 and last != 0):
 elif (last > 5):
     print("greater than 5")
 else:
-    print("zero")
+    print("0")
