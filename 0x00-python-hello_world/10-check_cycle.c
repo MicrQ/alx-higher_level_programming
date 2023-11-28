@@ -8,14 +8,14 @@
  */
 int check_cycle(listint_t *list)
 {
-	listint_t *listPlus2 = list->next->next;
+	listint_t *nextP = list;
 
-	while (list && listPlus2)
+	while (list && nextP)
 	{
-		if (list == listPlus2)
+		nextP = nextP->next->next;
+		if (list == nextP)
 			return (1);
 		list = list->next;
-		listPlus2 = listPlus2->next->next;
 	}
 	return (0);
 }
