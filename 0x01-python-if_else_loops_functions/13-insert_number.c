@@ -15,10 +15,10 @@ listint_t *insert_node(listint_t **head, int number)
 	node->n = number;
 	node->next = NULL;
 
-	if (number < tmp->n || !tmp)
+	if (!tmp || number <= tmp->n)
 	{
 		node->next = tmp;
-		tmp = node;
+		*head = node;
 		return (node);
 	}
 	while (tmp->next != NULL && tmp->next->n < number)
