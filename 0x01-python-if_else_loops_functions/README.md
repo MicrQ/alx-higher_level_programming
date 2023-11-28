@@ -1,0 +1,1 @@
+This folder contains my python project on conditions, loops and functions
