@@ -10,7 +10,7 @@ int check_cycle(listint_t *list)
 {
 	listint_t *nextP = list;
 
-	while (list && nextP)
+	while (list && nextP && list->next)
 	{
 		nextP = nextP->next->next;
 		if (list == nextP)
