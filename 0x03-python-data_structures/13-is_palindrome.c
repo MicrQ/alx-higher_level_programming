@@ -17,6 +17,24 @@ listint_t *add_node(listint_t **head, int data)
 	return (new);
 }
 
+/**
+ * free_list - helps to free a memory of type list_t(aka struct list_s)
+ * @head: a pointer to the first element
+ */
+
+void free_list(listint_t *head)
+{
+	listint_t *hold;
+
+	while (head != NULL)
+	{
+		hold = head->next;
+		free(head);
+		head = hold;
+	}
+}
+
+
 
 /**
  * is_palindrome - a function that checks if a linkedlis is palindrome
@@ -46,10 +64,14 @@ int is_palindrome(listint_t **head)
 	while (i < nodes / 2)
 	{
 		if (new->n != ptr->n)
+		{
+			free_list(new);
 			return (0);
+		}
 		new = new->next;
 		ptr = ptr->next;
 		i++;
 	}
+	free_list(new);
 	return (1);
 }
