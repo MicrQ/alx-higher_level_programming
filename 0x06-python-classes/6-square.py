@@ -12,14 +12,12 @@ class Square:
             size (int): the size of the square
             position (tuple): position on the square
         """
-        self.__size = size
-        self.__position = position
+        self.size = size
+        self.position = position
 
     def area(self):
         """Calculates the area of the square
         """
-        if not isinstance(self.__size, int):
-            raise TypeError("size must be an integer")
         return (self.__size ** 2)
 
     @property
@@ -55,7 +53,7 @@ class Square:
     @property
     def position(self):
         """To retrive position"""
-        return (self.__position)
+        return self.__position
 
     @position.setter
     def position(self, value):
