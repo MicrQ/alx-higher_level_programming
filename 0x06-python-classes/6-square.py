@@ -31,24 +31,24 @@ class Square:
         Argumenst:
             size (int): the size of the square
         """
-        if isinstance(value, int):
-            if value < 0:
-                raise ValueError("size must be >= 0")
-            self.__size = value
-        else:
+        if type(value) != int:
             raise TypeError("size must be an integer")
+        if value < 0:
+            raise ValueError("size must be >= 0")
+        self.__size = value
 
     def my_print(self):
         """prints # size by size"""
         if self.__size == 0:
             print()
-        for i in range(self.__size):
-            if self.__position[1] <= 1:
-                for p in range(self.__position[0]):
-                    print(" ", end="")
-            for j in range(self.__size):
-                print("#", end="")
-            print()
+        else:
+            for i in range(self.__size):
+                if self.__position[1] <= 1:
+                    for p in range(self.__position[0]):
+                        print(" ", end="")
+                for j in range(self.__size):
+                    print("#", end="")
+                print()
 
     @property
     def position(self):
