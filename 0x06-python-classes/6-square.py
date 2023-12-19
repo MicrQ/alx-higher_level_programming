@@ -12,13 +12,8 @@ class Square:
             size (int): the size of the square
             position (tuple): position on the square
         """
-        if isinstance(size, int):
-            if size < 0:
-                raise ValueError("size must be >= 0")
-            self.__size = size
-            self.__position = position
-        else:
-            raise TypeError("size must be an integer")
+        self.__size = size
+        self.__position = position
 
     def area(self):
         """Calculates the area of the square
@@ -31,11 +26,6 @@ class Square:
     def size(self):
         """To retrive the value of __size"""
         return (self.__size)
-
-    @property
-    def position(self):
-        """To retrive position"""
-        return (self.__position)
 
     @size.setter
     def size(self, value):
@@ -50,15 +40,6 @@ class Square:
         else:
             raise TypeError("size must be an integer")
 
-    @position.setter
-    def position(self, value):
-        """Position setter"""
-        if type(value) != tuple or len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if any(type(i) != int for i in value) or any(j < 0 for j in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
-
     def my_print(self):
         """prints # size by size"""
         if self.__size == 0:
@@ -70,3 +51,17 @@ class Square:
             for j in range(self.__size):
                 print("#", end="")
             print()
+
+    @property
+    def position(self):
+        """To retrive position"""
+        return (self.__position)
+
+    @position.setter
+    def position(self, value):
+        """Position setter"""
+        if type(value) != tuple or len(value) != 2:
+            raise TypeError("position must be a tuple of 2 positive integers")
+        if any(type(i) != int for i in value) or any(j < 0 for j in value):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
