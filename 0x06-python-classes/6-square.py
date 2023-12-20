@@ -10,15 +10,10 @@ class Square:
 
         Argumenst:
             size (int): the size of the square
-            position (tuple): position on the square
+            position (int, int): position on the square
         """
         self.size = size
         self.position = position
-
-    def area(self):
-        """Calculates the area of the square
-        """
-        return (self.__size ** 2)
 
     @property
     def size(self):
@@ -37,6 +32,24 @@ class Square:
             raise ValueError("size must be >= 0")
         self.__size = value
 
+    @property
+    def position(self):
+        """To retrive position"""
+        return (self.__position)
+
+    @position.setter
+    def position(self, value):
+        """Position setter"""
+        if (not isinstance(value, tuple) or len(value) != 2 or
+                not all(isinstance(i, int) for i in value) or
+                not all(j >= 0 for j in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
+        self.__position = value
+
+    def area(self):
+        """Computes the area"""
+        return (self.__size * self.__size)
+
     def my_print(self):
         """prints # size by size"""
         if self.__size == 0:
@@ -49,17 +62,3 @@ class Square:
                 for j in range(self.__size):
                     print("#", end="")
                 print()
-
-    @property
-    def position(self):
-        """To retrive position"""
-        return self.__position
-
-    @position.setter
-    def position(self, value):
-        """Position setter"""
-        if type(value) != tuple or len(value) != 2:
-            raise TypeError("position must be a tuple of 2 positive integers")
-        if any(type(i) != int for i in value) or any(j < 0 for j in value):
-            raise TypeError("position must be a tuple of 2 positive integers")
-        self.__position = value
