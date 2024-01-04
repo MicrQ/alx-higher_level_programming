@@ -1,16 +1,19 @@
 #!/usr/bin/python3
-""" Rectangle class """
+"""A class that defines a rectangle"""
 
 
 class Rectangle:
-    """Defines a rectangle"""
+    """represents a rectangle"""
 
     def __init__(self, width=0, height=0):
-        """ Initialization of the rextangle
+        """_summary_
 
         Args:
             width (int): Defaults to 0.
             height (int): Defaults to 0.
+        Raises:
+            TypeError: if value is not integer
+            ValueError: if value is less than 0
         """
         self.width = width
         self.height = height
@@ -22,17 +25,9 @@ class Rectangle:
 
     @width.setter
     def width(self, value):
-        """to set the width
-
-        Args:
-            value (int): the new width
-
-        Raises:
-            TypeError: if value is not integer
-            ValueError: if value is less than 0
-        """
+        """to set the width"""
         if not isinstance(value, int):
-            raise TypeError("width must be an intege")
+            raise TypeError("width must be an integer")
         if value < 0:
             raise ValueError("width must be >= 0")
         self.__width = value
