@@ -76,4 +76,5 @@ class Rectangle:
         return rect
 
     def __repr__(self):
+        """string representation for developer"""
         return ("Rectangle({:d}, {:d})".format(self.__width, self.__height))
