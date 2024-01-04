@@ -4,8 +4,9 @@
 
 class Rectangle:
     """Defines a rectangle"""
+
     def __init__(self, width=0, height=0):
-        """ Initialization
+        """ Initialization of the rextangle
 
         Args:
             width (int): Defaults to 0.
@@ -16,11 +17,7 @@ class Rectangle:
 
     @property
     def width(self):
-        """getter
-
-        Returns:
-            int: the value of width
-        """
+        """getter"""
         return self.__width
 
     @width.setter
@@ -34,7 +31,7 @@ class Rectangle:
             TypeError: if value is not integer
             ValueError: if value is less than 0
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("width must be an intege")
         if value < 0:
             raise ValueError("width must be >= 0")
@@ -42,11 +39,7 @@ class Rectangle:
 
     @property
     def height(self):
-        """To retrive the height
-
-        Returns:
-            int: the value of height
-        """
+        """To retrive the height"""
         return self.__height
 
     @height.setter
@@ -60,7 +53,7 @@ class Rectangle:
             TypeError: if value is not integer
             ValueError: if value is less than 0
         """
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value < 0:
             raise ValueError("height must be >= 0")
