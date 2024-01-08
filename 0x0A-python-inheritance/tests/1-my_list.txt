@@ -1,0 +1,35 @@
+Test Cases
+
+Importing the module:
+    >>> MyList= __import__('1-my_list').MyList
+
+creating object:
+    >>> my_list = MyList()
+
+Checking:
+    >>> my_list
+    []
+
+Appending:
+    >>> my_list.append(2)
+
+    >>> my_list.append(0)
+    
+    >>> my_list.append(4)
+    
+    >>> my_list.append(1)
+    
+    >>> my_list
+    [2, 0, 4, 1]
+
+    >>> my_list.print_sorted()
+    [0, 1, 2, 4]
+
+Appending other format(str):
+    >>> my_list.append("test")
+    >>> my_list
+    [2, 0, 4, 1, 'test']
+    >>> my_list.print_sorted()
+    Traceback (most recent call last):
+        ...
+    TypeError: '<' not supported between instances of 'str' and 'int'
