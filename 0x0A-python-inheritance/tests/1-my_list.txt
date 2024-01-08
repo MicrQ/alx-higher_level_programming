@@ -25,6 +25,12 @@ Appending:
     >>> my_list.print_sorted()
     [0, 1, 2, 4]
 
+    >>> a=MyList("hello")
+    >>> a
+    ['h', 'e', 'l', 'l', 'o']
+    >>> a.print_sorted()
+    ['e', 'h', 'l', 'l', 'o']
+
 Appending other format(str):
     >>> my_list.append("test")
     >>> my_list
