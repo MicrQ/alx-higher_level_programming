@@ -7,4 +7,5 @@ class MyList(list):
 
     def print_sorted(self):
         """prints the list by asc order"""
-        print("{}".format(sorted(self)))
+        lst = self[:]
+        print("{}".format(sorted(lst)))
