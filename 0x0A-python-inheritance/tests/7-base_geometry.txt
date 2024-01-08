@@ -1,19 +1,48 @@
 =====Tests as follow====
 Importing:
     >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+
     >>> bg = BaseGeometry()
 
 Checks:
+    >>> bg.integer_validator("test", 0)
+    Traceback (most recent call last):
+    ValueError: test must be greater than 0
+
     >>> bg.integer_validator("test", -10)
     Traceback (most recent call last):
     ValueError: test must be greater than 0
+
     >>> bg.integer_validator("test", 10)
+
     >>> bg.integer_validator("test", "x")
     Traceback (most recent call last):
     TypeError: test must be an integer
+
     >>> bg.integer_validator("test", True)
     Traceback (most recent call last):
     TypeError: test must be an integer
+
+    >>> bg.integer_validator("test", None)
+    Traceback (most recent call last):
+    TypeError: test must be an integer
+
+    >>> bg.integer_validator("test", 'nan')
+    Traceback (most recent call last):
+    TypeError: test must be an integer
+
+    >>> bg.integer_validator("test", (2,))
+    Traceback (most recent call last):
+    TypeError: test must be an integer
+
+    >>> bg.integer_validator("test", {2,3})
+    Traceback (most recent call last):
+    TypeError: test must be an integer
+
     >>> bg.integer_validator("test", [1,2,3])
     Traceback (most recent call last):
     TypeError: test must be an integer
+
+    >>> bg.integer_validator("test")
+    Traceback (most recent call last):
+    TypeError: integer_validator() missing 1 required positional argument: 'value'
