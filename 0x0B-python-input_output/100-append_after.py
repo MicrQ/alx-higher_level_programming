@@ -2,7 +2,7 @@
 """appending after a line that contains a given word"""
 
 
-def append_after(filename='', search_string='', new_string=''):
+def append_after(filename="", search_string="", new_string=""):
     """appends after searching"""
     to_write = ''
     with open(filename, "r", encoding="utf-8") as f:
