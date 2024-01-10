@@ -7,7 +7,6 @@ def append_after(filename='', search_string='', new_string=''):
     to_write = ''
     with open(filename, "r", encoding="utf-8") as f:
         line = f.readline()
-        print(line)
         while(line != ''):
             to_write += line
             if search_string in line:
