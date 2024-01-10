@@ -17,9 +17,12 @@ class Student:
             return self.__dict__
 
         new_dict = {}
+        # for item in attrs:
+        #     try:
+        #         new_dict[item] = self.__dict__[item]
+        #     except Exception:
+        #         pass
         for item in attrs:
-            try:
+            if item in self.__dict__.keys():
                 new_dict[item] = self.__dict__[item]
-            except Exception:
-                pass
         return new_dict
