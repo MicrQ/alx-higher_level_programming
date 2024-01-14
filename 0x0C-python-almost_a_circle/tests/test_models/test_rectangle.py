@@ -224,7 +224,36 @@ class Test__str__(unittest.TestCase):
         self.assertEqual(str(Rectangle(8, 9, 0, 0, 12)), test1)
 
 
-""""""
+"""tests for update method"""
+
+
+class TestUpdateMethod(unittest.TestCase):
+    """testing the update method"""
+
+    def test_correct_update(self):
+        """with valid args"""
+        beforeUpdate = "[Rectangle] (16) 12/23 - 6/9"
+        afterUpdate = "[Rectangle] (89) 3/4 - 7/8"
+        rect = Rectangle(6, 9, 12, 23, 16)
+        self.assertEqual(str(rect), beforeUpdate)
+        rect.update()
+        self.assertEqual(str(rect), beforeUpdate)
+        rect.update(89, 7, 8, 3, 4)
+        self.assertEqual(str(rect), afterUpdate)
+
+        rect = Rectangle(12, 9, 12, 23, 16)
+        rect.update(None, 22, 33, 44, 55)
+        self.assertEqual(None, rect.id)
+
+    def test_update_invalid_args(self):
+        """with invalid args"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        with self.assertRaisesRegex(TypeError, "y must be an integer"):
+            r.update(89, 2, 3, 4, "invalid")
+        with self.assertRaisesRegex(TypeError, "x must be an integer"):
+            r.update(89, 2, 3, "invalid", 6)
+        with self.assertRaisesRegex(TypeError, "width must be an integer"):
+            r.update(89, "invalid", 4, 7, 4)
 
 
 if __name__ == "__main__":

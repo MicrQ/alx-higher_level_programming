@@ -89,6 +89,27 @@ class Rectangle(Base):
 
     def __str__(self):
         """__str__ to return [Rectangle] (id) <x>/<y> - <width>/<height>"""
-        return "[Rectangle] ({:d}) {:d}/{:d} - {:d}/{:d}".format(
+        return "[Rectangle] ({}) {:d}/{:d} - {:d}/{:d}".format(
             self.id, self.__x, self.__y, self.__width, self.__height
         )
+    
+    def update(self, *args):
+        """updates given arguments to attributes
+        args:
+            1st: id, 2nd: width, 3rd: height, 4th: x, 5th: y
+            """
+        i = 0
+        for value in args:
+            if i == 0:
+                self.id = value
+            elif i == 1:
+                self.width = value
+            elif i == 2:
+                self.height = value
+            elif i == 3:
+                self.x = value
+            elif i == 4:
+                self.y = value
+            else:
+                break
+            i += 1
