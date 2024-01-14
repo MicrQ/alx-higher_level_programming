@@ -1,10 +1,19 @@
 #!/usr/bin/python3
 """Test for Rectangle class"""
 import unittest
+from models.base import Base
 from models.rectangle import Rectangle
+from io import StringIO
+import sys
+
 
 class TestRectangleInit(unittest.TestCase):
     """tests for rectangle instantiation of task 2"""
+
+    def test_isinstance(self):
+        """testing if Rectangle class inherits from Base"""
+        self.assertTrue(isinstance(Rectangle(3,4), Base))
+        self.assertIsInstance(Rectangle(3, 4), Base)
 
     def test_no_parameters(self):
         """exception for no argument for width and height"""
@@ -49,7 +58,10 @@ class TestRectangleInit(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(1, 2, 3, 4, 5, 6)
 
+
 """task 3"""
+
+
 class TestRectangleValidation(unittest.TestCase):
     """tests for rectangle validation with setters and getters"""
 
@@ -100,7 +112,10 @@ class TestRectangleValidation(unittest.TestCase):
         self.assertEqual(Rectangle(10, 5, 4, 6).height, 5)
         self.assertEqual(Rectangle(10, 5, 4, 6).width, 10)
 
+
 """"testing the area method"""
+
+
 class TestArea(unittest.TestCase):
     """tests the area of the rectangle objects"""
 
@@ -114,6 +129,74 @@ class TestArea(unittest.TestCase):
             Rectangle(3, 2).area(5)
 
 
+""""tesing the display method"""
+
+
+class TestDisplay(unittest.TestCase):
+    """tests the output of the display function"""
+
+    def test_printed(self):
+        """testing the output of the method"""
+        """creating object to capture from stdout"""
+        cap_op = StringIO()
+        """redirecting the stdout to StringIO object"""
+        sys.stdout = cap_op
+
+        Rectangle(2, 3).display()
+        self.assertEqual(cap_op.getvalue(), "##\n##\n##\n")
+
+        """restoring the stdout"""
+        sys.stdout = sys.__stdout__
+
+    def test_printed1(self):
+        """testing the output of the method"""
+        """creating object to capture from stdout"""
+        cap_op1 = StringIO()
+        """redirecting the stdout to StringIO object"""
+        sys.stdout = cap_op1
+
+        Rectangle(4, 4).display()
+        self.assertEqual(cap_op1.getvalue(), "####\n####\n####\n####\n")
+
+        """restoring the stdout"""
+        sys.stdout = sys.__stdout__
+
+    def test_printed2(self):
+        """testing the output of the method"""
+        """creating object to capture from stdout"""
+        cap_op2 = StringIO()
+        """redirecting the stdout to StringIO object"""
+        sys.stdout = cap_op2
+
+        Rectangle(6, 4).display()
+        op = "######\n######\n######\n######\n"
+        self.assertEqual(cap_op2.getvalue(), op)
+
+        """restoring the stdout"""
+        sys.stdout = sys.__stdout__
+
+    def test_no_arg_4display(self):
+        """no argument needed"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 4).display(5)
+
+"""test for __str__ overriding"""
+
+
+class Test__str__(unittest.TestCase):
+    """testing the overriden method __str__"""
+
+    def test_correct_return(self):
+        test1 = "[Rectangle] (12) 2/3 - 8/9"
+        self.assertEqual(str(Rectangle(8, 9, 2, 3, 12)), test1)
+
+        test1 = "[Rectangle] (7) 2/4 - 8/9"
+        self.assertEqual(str(Rectangle(8, 9, 2, 4, 7)), test1)
+        
+        test1 = "[Rectangle] (12) 0/0 - 8/9"
+        self.assertEqual(str(Rectangle(8, 9, 0, 0, 12)), test1)
+
+""""""
 
 
 if __name__ == "__main__":
