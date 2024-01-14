@@ -12,7 +12,7 @@ class TestRectangleInit(unittest.TestCase):
 
     def test_isinstance(self):
         """testing if Rectangle class inherits from Base"""
-        self.assertTrue(isinstance(Rectangle(3,4), Base))
+        self.assertTrue(isinstance(Rectangle(3, 4), Base))
         self.assertIsInstance(Rectangle(3, 4), Base)
 
     def test_no_parameters(self):
@@ -180,6 +180,33 @@ class TestDisplay(unittest.TestCase):
         with self.assertRaises(TypeError):
             Rectangle(3, 4).display(5)
 
+    """Display test with x and y"""
+    def test_display_x_y(self):
+        """handling x and y as well"""
+        expected = "\n\n  ##\n  ##\n"
+        cap_op = StringIO()
+        sys.stdout = cap_op
+
+        Rectangle(2, 2, 2, 2).display()
+        self.assertEqual(cap_op.getvalue(), expected)
+        sys.stdout = sys.__stdout__
+
+    def test_display_x_y_2(self):
+        """handling x and y as well"""
+        expected = "\n\n\n  ###\n  ###\n  ###\n  ###\n"
+        cap_op = StringIO()
+        sys.stdout = cap_op
+
+        Rectangle(3, 4, 2, 3).display()
+        self.assertEqual(cap_op.getvalue(), expected)
+        sys.stdout = sys.__stdout__
+
+    def test_no_arg_4display2(self):
+        """no argument needed"""
+        with self.assertRaises(TypeError):
+            Rectangle(3, 4, 2, 5).display(5)
+
+
 """test for __str__ overriding"""
 
 
@@ -192,9 +219,10 @@ class Test__str__(unittest.TestCase):
 
         test1 = "[Rectangle] (7) 2/4 - 8/9"
         self.assertEqual(str(Rectangle(8, 9, 2, 4, 7)), test1)
-        
+
         test1 = "[Rectangle] (12) 0/0 - 8/9"
         self.assertEqual(str(Rectangle(8, 9, 0, 0, 12)), test1)
+
 
 """"""
 
