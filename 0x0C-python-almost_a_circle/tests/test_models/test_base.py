@@ -162,6 +162,23 @@ class TestJsonFile(unittest.TestCase):
         r2 = Rectangle.create(**r1_dict)
         self.assertIsNot(r1, r2)
 
+    """tests for load from file task 19"""
+    def test_load_from_file(self):
+        s = Square(5, 1, 3, 3)
+        s1 = Square(9, 5, 2, 3)
+        Square.save_to_file([s, s1])
+        output = Square.load_from_file()
+        self.assertTrue(all(type(o) == Square for o in output))
+
+    def test_load_from_no_file(self):
+        output = Square.load_from_file()
+        self.assertEqual([], output)
+
+    def test_load_from_file_more_than_one_arg(self):
+        with self.assertRaises(TypeError):
+            Base.load_from_file([], 1)
+
+
 
 if __name__ == "__main__":
     unittest.main()
