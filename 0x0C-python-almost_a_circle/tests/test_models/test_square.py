@@ -68,3 +68,31 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(Square(6).width, 6)
         self.assertEqual(Square(6).height, 6)
         self.assertEqual(Square(8, 3, 5, 1).size, 8)
+
+    def test_update_method(self):
+        """testing the modified update method of Square class"""
+        sq = Square(20, 12, 32, 23)
+        """before update"""
+        self.assertEqual(sq.id, 23)
+        self.assertEqual(sq.size, 20)
+        self.assertEqual(sq.x, 12)
+        self.assertEqual(sq.y, 32)
+        """updating with args only"""
+        sq.update(10, 50, 30, 40)
+        self.assertEqual(sq.id, 10)
+        self.assertEqual(sq.size, 50)
+        self.assertEqual(sq.x, 30)
+        self.assertEqual(sq.y, 40)
+        """updating with both args and kwargs"""
+        sq.update(20, 30, 40, 50)
+        self.assertEqual(sq.id, 20)
+        self.assertEqual(sq.size, 30)
+        self.assertEqual(sq.x, 40)
+        self.assertEqual(sq.y, 50)
+        """updating with kwargs only"""
+        kwargs = {"y": 10, "size": 80, "id": 30, "x": 40}
+        sq.update(**kwargs)
+        self.assertEqual(sq.id, 30)
+        self.assertEqual(sq.size, 80)
+        self.assertEqual(sq.x, 40)
+        self.assertEqual(sq.y, 10)
