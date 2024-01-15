@@ -3,6 +3,8 @@
 
 
 from models.rectangle import Rectangle
+
+
 """importing Rectangle class"""
 
 
@@ -34,11 +36,14 @@ class Square(Rectangle):
             args: high priority
             kwargs: if len(args) == 0
         """
-        if len(args) != 0:
+        if args and len(args) != 0:
             count = 0
             for value in args:
                 if count == 0:
-                    self.id = value
+                    if value is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = value
                 elif count == 1:
                     self.size = value
                 elif count == 2:
@@ -49,7 +54,10 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 if key == "id":
-                    self.id = value
+                    if value is None:
+                        self.__init__(self.size, self.x, self.y)
+                    else:
+                        self.id = value
                 elif key == "size":
                     self.size = value
                 elif key == "x":
