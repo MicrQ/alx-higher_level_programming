@@ -144,6 +144,24 @@ class TestJsonFile(unittest.TestCase):
         list_output = Rectangle.from_json_string(json_list_input)
         self.assertEqual(list_input, list_output)
 
+    def test_create_rectangle(self):
+        r1 = Rectangle(3, 5, 1, 2, 7)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertEqual("[Rectangle] (7) 1/2 - 3/5", str(r1))
+
+    def test_create_rectangle_1(self):
+        r1 = Rectangle(3, 5, 1, 2, 7)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertEqual("[Rectangle] (7) 1/2 - 3/5", str(r2))
+
+    def test_create_rectangle_2(self):
+        r1 = Rectangle(3, 5, 1, 2, 7)
+        r1_dict = r1.to_dictionary()
+        r2 = Rectangle.create(**r1_dict)
+        self.assertIsNot(r1, r2)
+
 
 if __name__ == "__main__":
     unittest.main()
