@@ -28,9 +28,9 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(Square(9).id, sq.id + 1)
         self.assertEqual(Square(20).width, 20)
         self.assertEqual(Square(20).height, 20)
-        sq1 = Square("20", 10, 12, 33)
-        self.assertEqual(sq1.width, "20")
-        self.assertEqual(sq1.height, "20")
+        sq1 = Square(20, 10, 12, 33)
+        self.assertEqual(sq1.width, 20)
+        self.assertEqual(sq1.height, 20)
         self.assertEqual(sq1.x, 10)
         self.assertEqual(sq1.y, 12)
         self.assertEqual(sq1.id, 33)
@@ -61,3 +61,10 @@ class TestSquare(unittest.TestCase):
         self.assertEqual(cap_op1.getvalue(), expected)
 
         sys.stdout = sys.__stdout__
+
+    def test_size_getter_setter(self):
+        """testing the setter and getter of size"""
+        self.assertEqual(Square(6).size, 6)
+        self.assertEqual(Square(6).width, 6)
+        self.assertEqual(Square(6).height, 6)
+        self.assertEqual(Square(8, 3, 5, 1).size, 8)
