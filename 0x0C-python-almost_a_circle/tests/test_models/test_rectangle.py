@@ -241,10 +241,6 @@ class TestUpdateMethod(unittest.TestCase):
         rect.update(89, 7, 8, 3, 4)
         self.assertEqual(str(rect), afterUpdate)
 
-        rect = Rectangle(12, 9, 12, 23, 16)
-        rect.update(None, 22, 33, 44, 55)
-        self.assertEqual(None, rect.id)
-
     def test_update_invalid_args(self):
         """with invalid args"""
         r = Rectangle(10, 10, 10, 10, 10)
@@ -254,6 +250,41 @@ class TestUpdateMethod(unittest.TestCase):
             r.update(89, 2, 3, "invalid", 6)
         with self.assertRaisesRegex(TypeError, "width must be an integer"):
             r.update(89, "invalid", 4, 7, 4)
+
+    """tests for update method with args and kwargs"""
+    def test_update_with_args_kwargs(self):
+        """kwargs will take place if len(args) == 0(if args is empty)"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        args = (4, 7, 3, 8, 2)
+        kwargs = {"id": 40, "width": 70, "height": 30, "x": 80, "y": 20}
+        r.update(*args, **kwargs)
+        self.assertEqual(r.id, 4)
+        self.assertEqual(r.width, 7)
+        self.assertEqual(r.height, 3)
+        self.assertEqual(r.x, 8)
+        self.assertEqual(r.y, 2)
+
+    def test_update_with_kwargs_only(self):
+        """without or empty *args"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        kwargs = {"id": 40, "width": 70, "height": 30, "x": 80, "y": 20}
+        r.update(**kwargs)
+        self.assertEqual(r.id, 40)
+        self.assertEqual(r.width, 70)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 80)
+        self.assertEqual(r.y, 20)
+
+    def test_update_with_args_only(self):
+        """without or empty *kwargs"""
+        r = Rectangle(10, 10, 10, 10, 10)
+        args = (40, 70, 30, 80, 20)
+        r.update(*args)
+        self.assertEqual(r.id, 40)
+        self.assertEqual(r.width, 70)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 80)
+        self.assertEqual(r.y, 20)
 
 
 if __name__ == "__main__":

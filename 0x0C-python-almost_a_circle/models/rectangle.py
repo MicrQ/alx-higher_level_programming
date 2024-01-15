@@ -93,23 +93,43 @@ class Rectangle(Base):
             self.id, self.__x, self.__y, self.__width, self.__height
         )
 
-    def update(self, *args):
+    def update(self, *args, **kwargs):
         """updates given arguments to attributes
-        args:
+        args: order is important
             1st: id, 2nd: width, 3rd: height, 4th: x, 5th: y
+        kwargs: no order needed(key/value pair)
             """
-        i = 0
-        for value in args:
-            if i == 0:
-                self.id = value
-            elif i == 1:
-                self.width = value
-            elif i == 2:
-                self.height = value
-            elif i == 3:
-                self.x = value
-            elif i == 4:
-                self.y = value
-            else:
-                break
-            i += 1
+        if len(args) > 0:
+            i = 0
+            for value in args:
+                if i == 0:
+                    if value is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = value
+                elif i == 1:
+                    self.width = value
+                elif i == 2:
+                    self.height = value
+                elif i == 3:
+                    self.x = value
+                elif i == 4:
+                    self.y = value
+                else:
+                    break
+                i += 1
+        elif len(kwargs) > 0:
+            for key, value in kwargs.items():
+                if key == "id":
+                    if value is None:
+                        self.__init__(self.width, self.height, self.x, self.y)
+                    else:
+                        self.id = value
+                elif key == "width":
+                    self.width = value
+                elif key == "height":
+                    self.height = value
+                elif key == "x":
+                    self.x = value
+                elif key == "y":
+                    self.y = value
