@@ -286,6 +286,13 @@ class TestUpdateMethod(unittest.TestCase):
         self.assertEqual(r.x, 80)
         self.assertEqual(r.y, 20)
 
+    def test_to_dictionary_method(self):
+        """testing the dictionary representation of rectangle"""
+        self.assertEqual(Rectangle(2, 3, 4, 5, 6).to_dictionary(),
+                         {"id": 6, "width": 2, "height": 3, "x": 4, "y": 5})
+        self.assertEqual(Rectangle(4, 7, 2, 9, 5).to_dictionary(),
+                         {"id": 5, "width": 4, "height": 7, "x": 2, "y": 9})
+
 
 if __name__ == "__main__":
     unittest.main()
