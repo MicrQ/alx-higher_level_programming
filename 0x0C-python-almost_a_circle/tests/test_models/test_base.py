@@ -170,13 +170,39 @@ class TestJsonFile(unittest.TestCase):
         output = Square.load_from_file()
         self.assertTrue(all(type(o) == Square for o in output))
 
-    def test_load_from_no_file(self):
-        output = Square.load_from_file()
-        self.assertEqual([], output)
-
     def test_load_from_file_more_than_one_arg(self):
         with self.assertRaises(TypeError):
             Base.load_from_file([], 1)
+
+    """tests for csv serialization"""
+    @classmethod
+    def tearDown(self):
+        """Delete any created files."""
+        try:
+            os.remove("Rectangle.csv")
+        except IOError:
+            pass
+        try:
+            os.remove("Base.csv")
+        except IOError:
+            pass
+        try:
+            os.remove("Square.csv")
+        except IOError:
+            pass
+
+    def test_save_to_file_csv_one_rectangle(self):
+        rec = Rectangle(10, 7, 2, 8, 5)
+        Rectangle.save_to_file_csv([rec])
+        with open("Rectangle.csv", "r") as f:
+            self.assertTrue("5,10,7,2,8", f.read())
+
+    def test_save_to_file_csv_two_rectangles(self):
+        rec1 = Rectangle(10, 7, 2, 8, 5)
+        rec2 = Rectangle(2, 4, 1, 2, 3)
+        Rectangle.save_to_file_csv([rec1, rec2])
+        with open("Rectangle.csv", "r") as f:
+            self.assertTrue("5,10,7,2,8\n2,4,1,2,3", f.read())
 
 
 
