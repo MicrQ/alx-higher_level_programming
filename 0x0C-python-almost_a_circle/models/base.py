@@ -34,3 +34,10 @@ class Base:
             else:
                 listOfDict = [obj.to_dictionary() for obj in list_objs]
                 f.write(Base.to_json_string(listOfDict))
+
+    @staticmethod
+    def from_json_string(json_string):
+        """from json string to object creation"""
+        if json_string is None:
+            return []
+        return json.loads(json_string)

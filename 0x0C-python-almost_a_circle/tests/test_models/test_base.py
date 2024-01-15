@@ -129,6 +129,21 @@ class TestJsonFile(unittest.TestCase):
         with open("Square.json", "r") as f:
             self.assertEqual("[]", f.read())
 
+    def test_from_json_string(self):
+        list_input = [{"id": 89, "width": 10, "height": 4, "x": 7}]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
+    def test_from_json_two_rectangles(self):
+        list_input = [
+            {"id": 89, "width": 10, "height": 4, "x": 7, "y": 8},
+            {"id": 98, "width": 5, "height": 2, "x": 1, "y": 3},
+        ]
+        json_list_input = Rectangle.to_json_string(list_input)
+        list_output = Rectangle.from_json_string(json_list_input)
+        self.assertEqual(list_input, list_output)
+
 
 if __name__ == "__main__":
     unittest.main()
