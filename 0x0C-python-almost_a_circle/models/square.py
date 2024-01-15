@@ -15,11 +15,6 @@ class Square(Rectangle):
         """Initializing the Square object"""
         super().__init__(size, size, x, y, id)
 
-    def __str__(self):
-        return "[Square] ({}) {:d}/{:d} - {:d}".format(
-            self.id, self.x, self.y, self.width
-        )
-
     @property
     def size(self):
         """getter for size"""
@@ -51,7 +46,7 @@ class Square(Rectangle):
                 elif count == 3:
                     self.y = value
                 count += 1
-        else:
+        elif kwargs and len(kwargs) != 0:
             for key, value in kwargs.items():
                 if key == "id":
                     if value is None:
@@ -66,4 +61,8 @@ class Square(Rectangle):
                     self.y = value
 
     def to_dictionary(self):
-        return {"id": self.id, "x": self.x, "size": self.size, "y": self.y}
+        return {"id": self.id, "size": self.width, "x": self.x, "y": self.y}
+    
+    def __str__(self):
+        return "[Square] ({}) {}/{} - {}".format(
+            self.id, self.x, self.y, self.width)
