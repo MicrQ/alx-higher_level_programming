@@ -2,7 +2,7 @@
 
 This is my first <b>SQL</b> introduction project. which part of <b>ALX software enginnering</b> program.
 * DDL(Data Definition Language) and DML(Data Manipulation Language) SQL statements covered in this project as follow:
-    * INSERT
+    * `INSERT`
     * UPDATE
     * SELECT
     * ALTER
