@@ -3,10 +3,11 @@
     a State and Base = declarative_base().
 """
 
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import create_engine, Column, Integer, String, MetaData
 from sqlalchemy.orm import declarative_base, relationship
-from relationship_city import City, Base
 """ necessary modules """
+
+Base = declarative_base(metadata=MetaData())
 
 
 class State(Base):
