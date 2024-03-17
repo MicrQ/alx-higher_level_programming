@@ -2,6 +2,7 @@
 """ a script that creates the State “California” with the City “San Francisco”
     from the database hbtn_0e_100_usa.
 """
+
 if __name__ == '__main__':
     from sqlalchemy import create_engine
     from sqlalchemy.orm import Session
@@ -22,5 +23,3 @@ if __name__ == '__main__':
     session.add(newState)
     session.add(newCity)
     session.commit()
-
-    session.close()
