@@ -2,7 +2,10 @@
 """ class definition for City class """
 
 from model_state import Base
+from sqlalchemy.orm import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey
+
+Base = declarative_base()
 
 
 class City(Base):
