@@ -11,7 +11,7 @@ if __name__ == '__main__':
     from sqlalchemy.schema import Table
     from sys import argv
 
-    engine = create_engine('mysql+mysqldb://{}:{}@localhost:3306/{}'.format(
+    engine = create_engine('mysql+mysqldb://{}:{}@localhost/{}'.format(
         argv[1], argv[2], argv[3]), pool_pre_ping=True)
     Base.metadata.create_all(engine)
 
@@ -23,3 +23,4 @@ if __name__ == '__main__':
     session.add(newState)
     session.add(newCity)
     session.commit()
+    session.close()
