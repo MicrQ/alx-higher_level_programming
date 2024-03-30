@@ -5,7 +5,7 @@
 
 from urllib import request
 from sys import argv
-""" importing necessary modules """
+""" Importing necessary modules """
 
 with request.urlopen(argv[1]) as res:
     print(res.getheader('X-Request-Id'))
