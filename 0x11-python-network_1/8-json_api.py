@@ -9,7 +9,6 @@ if __name__ == '__main__':
     """ necessary modules """
 
     data = argv[1] if len(argv) == 2 else ""
-    print(data)
     res = requests.post('http://0.0.0.0:5000/search_user',
                         data={'q': data})
     try:
