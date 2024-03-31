@@ -7,5 +7,5 @@ if __name__ == '__main__':
 
     res = requests.get("https://alx-intranet.hbtn.io/status")
     print("Body response:")
-    print("\t - {}".format(type(res.text)))
-    print("\t - {}".format(res.text))
+    print("\t- {}".format(type(res.text)))
+    print("\t- {}".format(res.text))
