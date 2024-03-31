@@ -11,7 +11,7 @@ if __name__ == '__main__':
     data = argv[1] if len(argv) == 2 else ""
     print(data)
     res = requests.post('http://0.0.0.0:5000/search_user',
-                        data={'q': argv[1]})
+                        data={'q': data})
     try:
         jsn = res.json()
         if len(jsn) < 1:
