@@ -9,4 +9,4 @@ if __name__ == '__main__':
     """ necessary packages """
 
     res = requests.get(argv[1])
-    print(res.headers['X-Request-Id'])
+    print(res.headers.get('X-Request-Id'))
