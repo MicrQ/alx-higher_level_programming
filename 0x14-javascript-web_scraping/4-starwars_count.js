@@ -13,8 +13,7 @@ request(options, (error, response) => {
     response.body.results.forEach(film => {
       if (film.characters) {
         for (let i = 0; i < film.characters.length; i++) {
-          if (film.characters[i].search('18') > 0)
-          count++;
+          if (film.characters[i].search('18') > 0) { count++; }
         }
       }
     });
