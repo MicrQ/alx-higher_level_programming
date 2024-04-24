@@ -6,9 +6,9 @@ request(url, (error, response, body) => {
   if (!error) {
     const jsonResponse = JSON.parse(body).characters;
     for (let i = 0; i < jsonResponse.length; i++) {
-      request({ url: jsonResponse[i], json: true }, (err, res, bd) => {
+      request(jsonResponse[i], (err, res, bd) => {
         if (!err) {
-          console.log(bd.name);
+          console.log(JSON.parse(bd).name);
         }
       });
     }
