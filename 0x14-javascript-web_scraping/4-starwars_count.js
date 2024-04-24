@@ -9,11 +9,14 @@ const options = {
 let count = 0;
 
 request(options, (error, response) => {
-  if (!error) {
+  if (error == null) {
     response.body.results.forEach(film => {
-    if (film.characters && film.characters.includes('https://swapi-api.alx-tools.com/api/people/18/')) {
-      count++;
-    }
+      if (film.characters) {
+        for (let i = 0; i < film.characters.length; i++) {
+          if (film.characters[i].search('18') > 0)
+          count++;
+        }
+      }
     });
   }
   console.log(count);
